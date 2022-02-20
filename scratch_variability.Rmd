@@ -14,9 +14,14 @@ library(randomNames)
 ```{r}
 ## 5 to 10 names
 n = 5
+
+## 1) Generate Data: GPA and Names
 gpa_vec = round(rnorm(n,3.25,0.3),3)
 name_vec = randomNames(n,ethnicity = 5) %>% 
   word(2)
-g = c(1,2)
+gpa_df = data.frame(name_vec,gpa_vec)
+
+## 2) Calculate Mean of GPA
+mean_gpa = mean(gpa_vec)
 ```
 
