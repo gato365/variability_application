@@ -1,0 +1,21 @@
+---
+title: "Scratch Variability"
+author: "Dr. Williams"
+date: "2/20/2022"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(randomNames)
+```
+
+
+```{r}
+## 5 to 10 names
+n = 5
+gpa_vec = round(rnorm(n,3.25,0.3),3)
+name_vec = randomNames(n,ethnicity = 5) %>% 
+  word(2)
+```
+
