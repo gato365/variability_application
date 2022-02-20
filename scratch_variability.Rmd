@@ -18,10 +18,22 @@ n = 5
 ## 1) Generate Data: GPA and Names
 gpa_vec = round(rnorm(n,3.25,0.3),3)
 name_vec = randomNames(n,ethnicity = 5) %>% 
-  word(2)
+  word(2) %>% 
+  factor()
 gpa_df = data.frame(name_vec,gpa_vec)
 
 ## 2) Calculate Mean of GPA
 mean_gpa = mean(gpa_vec)
+
+
+## 3) Plot just GPAs 
+
+gpa_df %>% 
+  ggplot(aes(x = name_vec, y = gpa_vec)) +
+  geom_point() +
+  theme_bw() 
+
 ```
+
+
 
