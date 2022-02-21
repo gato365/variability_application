@@ -1,9 +1,13 @@
 ---
-title: "Scratch Variability"
+title: "Learning About Variance"
 author: "Dr. Williams"
 date: "2/20/2022"
 output: html_document
 ---
+
+
+
+
 
 ```{r}
 library(tidyverse)
@@ -11,27 +15,43 @@ library(randomNames)
 ```
 
 
+We have 5 students in a classroom and we know their GPA.
+
+
+
 ```{r}
-## 5 to 10 names
+## 1) Generate number 5 to 10 names
 n = 5
 
-## 1) Generate Data: GPA and Names
+## 2) Generate Data: GPA and Names
 gpa_vec = round(rnorm(n,3.25,0.3),3)
 name_vec = randomNames(n,ethnicity = 5) %>% 
   word(2) 
 id_vec = 1:n
 gpa_df = data.frame(id_vec,name_vec,gpa_vec)
 
+  
+```
 
-## 2) Calculate Mean of GPA
+
+Q1: Find their mean GPA. Provide it in the box.
+```{r}
+## 3) Calculate Mean of GPA
 mean_gpa = mean(gpa_vec)
+
+## 4) Determine Deviations from the mean
+gpa_df  = gpa_df %>% 
+  mutate(deviation = gpa_vec - mean_gpa )
 
 ```
 
 
+
+
+
 ```{r}
-## 3) Plot just GPAs 
-gpa_df %>% 
+## 5) Plot just GPAs 
+p1 <- gpa_df %>% 
   ggplot(aes(x = id_vec, y = gpa_vec)) +
   geom_point(size = 4) +
   labs(x = 'The Students', y = 'GPA',title = 'GPAs Across the Class') + 
@@ -41,14 +61,28 @@ gpa_df %>%
   theme(plot.title = element_text(size = 20, face = 'bold',hjust = 0.5),
         axis.title = element_text(size = 15),
         axis.text = element_text(size = 12.5, color = 'black'))
-
+p1
 ```
 
 
 
 ```{r}
-## 4) Plot just GPAs 
+## 5) Plot just GPAs and the mean and label it
 p1 +
   geom_hline(yintercept = mean_gpa, size = 2, color = 'red') +
   geom_text(x = (n+1)/2, y = mean_gpa +0.1, label = 'GPA Mean', size = 6, color = 'red')
 ```
+
+
+
+
+Draw the line from each point and the line. Those vertical lines means how far each GPA is from the overall mean. In other words, how far does each GPA deviate from the sample mean.
+
+
+Q: Find the deviation of each GPA and the mean of the GPAs.
+Q: Take the sum of the GPAs, what do you notice?
+
+```{r}
+
+```
+
