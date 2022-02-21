@@ -46,3 +46,9 @@ gpa_df %>%
 
 
 
+```{r}
+## 4) Plot just GPAs 
+p1 +
+  geom_hline(yintercept = mean_gpa, size = 2, color = 'red') +
+  geom_text(x = (n+1)/2, y = mean_gpa +0.1, label = 'GPA Mean', size = 6, color = 'red')
+```
