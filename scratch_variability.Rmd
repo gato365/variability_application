@@ -83,6 +83,19 @@ Q: Find the deviation of each GPA and the mean of the GPAs.
 Q: Take the sum of the GPAs, what do you notice?
 
 ```{r}
-
+p1 +
+  geom_hline(yintercept = mean_gpa, size = 2, color = 'black') +
+  geom_segment(aes(x=id_vec, xend=id_vec, y=gpa_vec, yend=mean_gpa), 
+        size=2, data=gpa_df, colour="red", linetype="dotted")
 ```
 
+
+So we have to square the deviations so that we do not make the sum of the deviations equal to 0.
+
+Q: Square all deviations
+
+Q: Sum all the square deviations. This is called the sum of squares.
+
+Since we are approximating the population mean with the sample mean we will divide the sum of the deviations by n-1.
+
+Since we squared all the deviations we must take the square root of the sum of the squares divided by n - 1.
